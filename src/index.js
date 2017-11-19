@@ -6,12 +6,24 @@ import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
-const initialState = ['Ed Sheeran - Shape Of You', "Ed Sheeran - Don't"];
+const initialState = {
+  tracks: ['Ed Sheeran - Shape Of You', "Ed Sheeran - Don't"],
+  playlists: ['My home playlist', 'My work playlist'],
+};
 
-function reducer(state = [], action) {
+function reducer(state, action) {
   console.log('call reducer', state, action);
   if (action.type === 'ADD_ITEM') {
-    return [...state, action.payload];
+    return { ...state, tracks: [...state.tracks, action.payload] };
+  } else if (action.type === 'DELETE_ITEM') {
+    // some logic here
+    return state;
+  } else if (action.type === 'ADD_PLAYLIST') {
+    // some logic here
+    return state;
+  } else if (action.type === 'DELETE_PLAYLIST') {
+    // some logic here
+    return state;
   }
   return state;
 }
